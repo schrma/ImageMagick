@@ -5,14 +5,34 @@ sudo apt-get install -y libtiff-dev
 mkdir github
 cd github
 git clone https://github.com/schrma/ImageMagick.git
-./configure --prefix=$HOME/github/ImageMagick/app
+./configure --prefix=$HOME/github/ImageMagick/app 
 make
 make install
 app/bin/convert --version
 app/bin/convert images/mountains.jpg -unsharp 20x1+2.5+0.1 ../mountains-sharpen.jpg
 ```
 
+## Prepare for YouCompleteMe
 
+Create the clang database:
+
+https://github.com/ycm-core/YouCompleteMe#option-1-use-a-compilation-database
+https://pypi.org/project/compiledb/
+
+Create compile_commands.json
+```
+sudo apt install python3-pip
+pip3 install compiledb
+$HOME/.local/bin/compiledb -n make
+```
+
+Commands:
+```
+nnoremap <leader>gic    :YcmCompleter GoToInclude<CR>
+nnoremap <leader>gt    :YcmCompleter GoTo<CR>
+nnoremap <leader>gdc    :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gdf    :YcmCompleter GoToDefinition<CR>
+```
 # ImageMagick
 
 [![Build Status](https://travis-ci.org/ImageMagick/ImageMagick.svg?branch=master)](https://travis-ci.org/ImageMagick/ImageMagick)
