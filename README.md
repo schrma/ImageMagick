@@ -1,3 +1,18 @@
+# My Installation
+```
+sudo apt-get install -y libjpeg-dev
+sudo apt-get install -y libtiff-dev
+mkdir github
+cd github
+git clone https://github.com/schrma/ImageMagick.git
+./configure --prefix=$HOME/github/ImageMagick/app
+make
+make install
+app/bin/convert --version
+app/bin/convert images/mountains.jpg -unsharp 20x1+2.5+0.1 ../mountains-sharpen.jpg
+```
+
+
 # ImageMagick
 
 [![Build Status](https://travis-ci.org/ImageMagick/ImageMagick.svg?branch=master)](https://travis-ci.org/ImageMagick/ImageMagick)
